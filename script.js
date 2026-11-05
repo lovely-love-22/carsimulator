@@ -7,15 +7,19 @@ const carDatabase = [
     { name: "Toyota Corolla", rarity: "common", price: 1500000, img: "https://pngimg.com/uploads/toyota/toyota_PNG1923.png" },
     { name: "Renault Logan", rarity: "common", price: 700000, img: "https://pngimg.com/uploads/renault/renault_PNG21.png" },
     { name: "Volkswagen Polo", rarity: "common", price: 1100000, img: "https://pngimg.com/uploads/volkswagen/volkswagen_PNG81.png" },
+    { name: "Ford Focus", rarity: "common", price: 1400000, img: "https://pngimg.com/uploads/ford/ford_PNG43.png" },
     // Редкие (Rare)
     { name: "BMW 3 Series", rarity: "rare", price: 3500000, img: "https://pngimg.com/uploads/bmw/bmw_PNG995.png" },
     { name: "Audi A4", rarity: "rare", price: 3800000, img: "https://pngimg.com/uploads/audi/audi_PNG1045.png" },
     { name: "Mercedes C-Class", rarity: "rare", price: 4200000, img: "https://pngimg.com/uploads/mercedes/mercedes_PNG802.png" },
     { name: "Toyota Camry", rarity: "rare", price: 3000000, img: "https://pngimg.com/uploads/toyota/toyota_PNG1918.png" },
+    { name: "Mazda 6", rarity: "rare", price: 2800000, img: "https://pngimg.com/uploads/mazda/mazda_PNG41.png" },
+    { name: "Nissan X-Trail", rarity: "rare", price: 3200000, img: "https://pngimg.com/uploads/nissan/nissan_PNG49.png" },
     // Эпические (Epic)
     { name: "Porsche 911", rarity: "epic", price: 18000000, img: "https://pngimg.com/uploads/porsche/porsche_PNG2.png" },
     { name: "Nissan GT-R R35", rarity: "epic", price: 11000000, img: "https://pngimg.com/uploads/nissan/nissan_PNG40.png" },
     { name: "Chevrolet Camaro SS", rarity: "epic", price: 8000000, img: "https://pngimg.com/uploads/chevrolet/chevrolet_PNG63.png" },
+    { name: "BMW M5 F90", rarity: "epic", price: 12000000, img: "https://pngimg.com/uploads/bmw/bmw_PNG989.png" },
     // Легендарные (Legendary)
     { name: "Bugatti Chiron", rarity: "legendary", price: 150000000, img: "https://pngimg.com/uploads/bugatti/bugatti_PNG33.png" },
     { name: "Koenigsegg Jesko", rarity: "legendary", price: 200000000, img: "https://pngimg.com/uploads/koenigsegg/koenigsegg_PNG7.png" },
@@ -37,6 +41,8 @@ function saveGame() {
 // --- ИНИЦИАЛИЗАЦИЯ ---
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
+    
+    // Регистрация
     if (!user) document.getElementById('authModal').classList.add('active');
     else document.getElementById('authModal').classList.remove('active');
 
@@ -47,10 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         saveGame(); document.getElementById('authModal').classList.remove('active'); updateUI();
     });
 
+    // Сброс
     document.getElementById('resetProgressBtn').addEventListener('click', () => {
         if(confirm("Сбросить прогресс?")) { localStorage.clear(); location.reload(); }
     });
 
+    // Навигация
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
@@ -72,14 +80,98 @@ function updateUI() {
     renderGarage();
 }
 
-// --- ГАРАЖ (С ГИБДД И ТАЙМЕРОМ) ---
+// --- ЛОГИКА РАДАРА ---
+let isScanning = false;
+const radarBtn = document.getElementById('radarButton');
+const radarIcon = document.getElementById('radarIcon');
+const radarTxt = document.getElementById('radarText');
+const radarDsc = document.getElementById('radarDesc');
+
+radarBtn.addEventListener('click', () => {
+    if (isScanning) return;
+    isScanning = true;
+    
+    radarBtn.classList.add('radar-scanning');
+    radarIcon.className = 'ph ph-spinner-gap';
+    radarTxt.textContent = 'ПОИСК...';
+    radarDsc.textContent = 'Сканируем частоты авторынка...';
+
+    setTimeout(() => {
+        // Выбираем случайную машину для радара
+        const randomCar = carDatabase[Math.floor(Math.random() * carDatabase.length)];
+        
+        // Считаем цену со скидкой (от 20% до 40%)
+        const discount = 0.2 + Math.random() * 0.2;
+        const finalPrice = Math.floor(randomCar.price * (1 - discount));
+
+        // Заполняем модалку
+        document.getElementById('radarCarImg').src = randomCar.img;
+        document.getElementById('radarCarName').textContent = randomCar.name;
+        document.getElementById('radarCarPrice').textContent = `${(finalPrice * 0.8).toLocaleString('ru-RU')} ₽ - ${(finalPrice * 1.1).toLocaleString('ru-RU')} ₽`;
+        document.getElementById('radarBuyPrice').textContent = finalPrice.toLocaleString('ru-RU') + ' ₽';
+        
+        let rText = "Находка · Обычное";
+        if(randomCar.rarity === 'rare') rText = "Находка · Редкое";
+        if(randomCar.rarity === 'epic') rText = "Находка · Эпическое";
+        if(randomCar.rarity === 'legendary') rText = "Находка · Легендарное";
+        document.getElementById('radarRarityText').textContent = rText;
+
+        // Открываем модалку
+        document.getElementById('radarModal').classList.add('active');
+        
+        // Кнопка купить
+        document.getElementById('radarBuyBtn').onclick = () => {
+            if (balance >= finalPrice) {
+                balance -= finalPrice;
+                // Добавляем в гараж
+                garage.push({ ...randomCar, registered: false, regTimer: null, plate: null });
+                saveGame();
+                updateUI();
+                document.getElementById('radarModal').classList.remove('active');
+                // alert(`Вы купили ${randomCar.name} за ${finalPrice.toLocaleString('ru-RU')} ₽!`);
+            } else {
+                alert("Недостаточно средств!");
+            }
+        };
+
+        // Кнопка пропустить
+        document.getElementById('radarSkipBtn').onclick = () => {
+            document.getElementById('radarModal').classList.remove('active');
+        };
+
+        // Сброс кнопки радара
+        isScanning = false;
+        radarBtn.classList.remove('radar-scanning');
+        radarIcon.className = 'ph ph-radar';
+        radarTxt.textContent = 'РАДАР';
+        radarDsc.textContent = 'Нажмите на радар для поиска горячего предложения. Редкая машина на 20-40% дешевле.';
+
+    }, 3000); // 3 секунды сканирования
+});
+
+
+// --- ГЕНЕРАЦИЯ НОМЕРОВ ---
+function generatePlate() {
+    const letters = "АВЕКМНОРСТУХ";
+    const region = "178";
+    let plate = "";
+    plate += letters[Math.floor(Math.random() * letters.length)];
+    plate += Math.floor(Math.random() * 9) + 1;
+    plate += Math.floor(Math.random() * 9);
+    plate += Math.floor(Math.random() * 9);
+    plate += letters[Math.floor(Math.random() * letters.length)];
+    plate += letters[Math.floor(Math.random() * letters.length)];
+    return plate;
+}
+
+// --- ГАРАЖ (С ГИБДД) ---
 function renderGarage() {
     const grid = document.getElementById('garageGrid');
     document.getElementById('garageCount').textContent = `(${garage.length} машин)`;
     grid.innerHTML = '';
 
     if (garage.length === 0) {
-        grid.innerHTML = '<p style="color: #888; text-align: center; width: 100%;">Гараж пуст. Крутите кейсы!</p>';
+        grid.innerHTML = '<p style="color: #888; text-align: center; width: 100%;">Гараж пуст. Крутите кейсы или ищите на радаре!</p>';
         return;
     }
 
@@ -91,6 +183,8 @@ function renderGarage() {
         if(car.rarity === 'legendary') { badgeText = "ЛЕГЕНДАРНАЯ"; badgeColor = "#eab308"; }
 
         let regBlock = '';
+        let plateHtml = '';
+
         if (!car.registered && !car.regTimer) {
             regBlock = `
                 <div class="car-action-block">
@@ -112,12 +206,18 @@ function renderGarage() {
                 </div>
             `;
         } else {
-            regBlock = `
-                <div class="car-action-block" style="background: #2a2a2a;">
-                    <div style="color: #4ade80; font-size: 14px; font-weight: bold;">✅ Зарегистрировано</div>
-                    <p style="font-size: 12px; color: #888; margin-top: 5px;">Номер: А001АА 77</p>
+            plateHtml = `
+                <div style="margin-top: 10px;">
+                    <div class="plate">
+                        <div class="plate-main">${car.plate}</div>
+                        <div class="plate-region">
+                            <span>178</span>
+                            <span class="plate-flag">🇷🇺 RUS</span>
+                        </div>
+                    </div>
                 </div>
             `;
+            regBlock = `<div class="car-action-block" style="background: #2a2a2a;"><div style="color: #4ade80; font-size: 14px; font-weight: bold;">✅ Зарегистрировано</div></div>`;
         }
 
         const card = document.createElement('div');
@@ -132,6 +232,7 @@ function renderGarage() {
                     <h3 style="margin: 0;">${car.name}</h3>
                     <span style="color: #888; font-size: 13px;">351 тыс. км</span>
                 </div>
+                ${plateHtml}
                 ${regBlock}
                 <div class="car-stats">
                     <div class="flex-between" style="margin-bottom: 5px;">
@@ -157,7 +258,7 @@ function renderGarage() {
     setInterval(updateTimers, 1000);
 }
 
-// --- ЛОГИКА ТАЙМЕРОВ ГИБДД ---
+// --- ЛОГИКА ТАЙМЕРОВ ---
 function updateTimers() {
     document.querySelectorAll('.timer-text').forEach(el => {
         const endTime = parseInt(el.getAttribute('data-time'));
@@ -168,11 +269,11 @@ function updateTimers() {
         if (distance < 0) {
             el.textContent = "Готово!";
             el.style.color = "#4ade80";
-            // Завершаем оформление
+            // Выдаем номер
             garage[index].registered = true;
             garage[index].regTimer = null;
+            garage[index].plate = generatePlate(); // Генерируем номер
             saveGame();
-            // Перерисовываем гараж, чтобы показать номера
             renderGarage();
         } else {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -182,12 +283,12 @@ function updateTimers() {
     });
 }
 
-// --- МОДАЛКА ГИБДД С ПОДПИСЬЮ ---
+// --- МОДАЛКА ГИБДД ---
 let currentCarIndex = null;
 let canvas, ctx, drawing = false;
 
 function openGibddModal(index) {
-    if (balance < 15000) return alert("Недостаточно средств для оформления (нужно 15 000 ₽)");
+    if (balance < 15000) return alert("Недостаточно средств (нужно 15 000 ₽)");
     currentCarIndex = index;
     const car = garage[index];
 
@@ -238,11 +339,10 @@ function openGibddModal(index) {
         initSignaturePad();
     }
     
-    // Заполняем бланк данными
     document.getElementById('docCarName').textContent = car.name;
     document.getElementById('docUserName').textContent = user.nickname;
     document.getElementById('docDate').textContent = new Date().toLocaleDateString('ru-RU');
-    clearSignature(); // Очищаем старую подпись
+    clearSignature();
     
     gibddModal.classList.add('active');
     
@@ -256,7 +356,6 @@ function openGibddModal(index) {
         saveGame();
         updateUI();
         gibddModal.classList.remove('active');
-        // alert("Заявление подписано! Ожидайте оформления.");
     };
 }
 
@@ -266,7 +365,7 @@ function initSignaturePad() {
     ctx = canvas.getContext('2d');
     ctx.lineWidth = 2;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = '#1e3a8a'; // Синяя ручка
+    ctx.strokeStyle = '#1e3a8a';
 
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
@@ -293,10 +392,7 @@ function draw(e) {
 }
 
 function stopDrawing() { drawing = false; }
-
-function clearSignature() {
-    if(ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+function clearSignature() { if(ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
 // --- ЛОГИКА КЕЙСОВ ---
 const modal = document.getElementById('caseModal');
@@ -333,8 +429,7 @@ function startRoulette(caseType) {
     rouletteTrack.style.transition = 'none'; rouletteTrack.style.transform = 'translateX(0)';
     
     const winCar = getRandomCar(caseType);
-    // Создаем копию для гаража
-    const carToAdd = { ...winCar, registered: false, regTimer: null };
+    const carToAdd = { ...winCar, registered: false, regTimer: null, plate: null };
 
     for (let i = 0; i < 50; i++) {
         const item = document.createElement('div');
