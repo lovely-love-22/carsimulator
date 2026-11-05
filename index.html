@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTO EMPIRE - Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Иконки -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <!-- ХЕДЕР -->
+    <header class="top-bar">
+        <div class="logo">
+            <i class="ph-fill ph-crown" style="color: #eab308;"></i> AUTO EMPIRE
+        </div>
+        <div class="top-actions">
+            <button class="icon-btn"><i class="ph-fill ph-fire" style="color: #f97316;"></i> 1</button>
+            <button class="icon-btn"><i class="ph ph-gear"></i></button>
+            <button class="menu-btn"><i class="ph ph-list"></i> Меню</button>
+        </div>
+    </header>
+
+    <!-- СТАТИСТИКА (Видна всегда) -->
+    <div class="main-stats-wrapper">
+        <div class="stats-card">
+            <div class="stat-item">
+                <span class="stat-label">БАЛАНС</span>
+                <span class="stat-value" id="balanceDisplay" style="color: #eab308;">105 000 ₽</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">УРОВЕНЬ</span>
+                <span class="stat-value">1</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">РЕПУТАЦИЯ</span>
+                <span class="stat-value">0 - Новичок</span>
+            </div>
+            <div class="energy-bar">
+                Энергия работы: 200/200 · поиск -25 · +1/с
+            </div>
+        </div>
+    </div>
+
+    <!-- КОНТЕНТ ВКЛАДОК -->
+    <main class="content">
+        
+        <!-- ВКЛАДКА: ГЛАВНАЯ -->
+        <section id="page-home" class="page active">
+            <div class="card radar-card">
+                <div class="radar-circle">
+                    <i class="ph ph-radar"></i>
+                    <span>РАДАР</span>
+                </div>
+                <p class="radar-text">Радар иногда ловит горячее предложение: редкая машина на 20-40% дешевле обычного выкупа. Но она сгорит через 10 секунд.</p>
+            </div>
+
+            <div class="card flex-between">
+                <div>
+                    <h3 style="margin: 0 0 5px 0;">Пригласи друга — получи 50 000 ₽</h3>
+                    <p style="margin: 0; color: #888; font-size: 14px;">А за 10 друзей — Bugatti La Voiture Noire</p>
+                </div>
+                <button class="primary-btn">Друзья</button>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0;">Ежедневные задания</h3>
+                <div class="task-item">
+                    <div>
+                        <div>Найти 5 автомобилей</div>
+                        <div class="task-progress">1/5 · награда 5 000 ₽</div>
+                    </div>
+                    <button class="secondary-btn claim-btn" data-reward="5000">Забрать</button>
+                </div>
+                <div class="task-item">
+                    <div>
+                        <div>Купить автомобиль</div>
+                        <div class="task-progress">0/1 · награда 3 000 ₽</div>
+                    </div>
+                    <button class="secondary-btn claim-btn" data-reward="3000">Забрать</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА: РЫНОК -->
+        <section id="page-market" class="page">
+            <h2 class="page-title">Рынок</h2>
+            <p class="page-subtitle">Покупайте и продавайте машины, детали и номера.</p>
+
+            <div class="card" style="border: 1px solid #d4a373; background: linear-gradient(90deg, #222 0%, #2a2520 100%);">
+                <h3 style="margin-top: 0; color: #d4a373;">Продайте машину другим игрокам</h3>
+                <p style="color: #888; font-size: 13px;">Сами назначаете цену. Комиссия 3%.</p>
+                <button class="primary-btn" style="width: 100%;">Выставить машину на продажу</button>
+            </div>
+
+            <div class="grid-menu">
+                <div class="grid-item">
+                    <i class="ph ph-wrench" style="color: #f87171;"></i>
+                    <h4>Аукцион Stage</h4>
+                    <span>торги Stage 1-4</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-chart-line-up" style="color: #60a5fa;"></i>
+                    <h4>Акции</h4>
+                    <span>крипта · валюта</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-identification-card" style="color: #4ade80;"></i>
+                    <h4>Номера</h4>
+                    <span>0/50 на складе</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-diamond" style="color: #38bdf8;"></i>
+                    <h4>NFT-клуб</h4>
+                    <span>от 100 млн ₽</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА: ГАРАЖ -->
+        <section id="page-garage" class="page">
+            <h2 class="page-title">Гараж - 0/1</h2>
+            <p class="page-subtitle">Ваши машины, обслуживание, музей и водный транспорт.</p>
+
+            <div class="grid-menu">
+                <div class="grid-item">
+                    <i class="ph ph-car-profile" style="color: #f87171;"></i>
+                    <h4>Мои авто</h4>
+                    <span>0/1 машин</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-wrench" style="color: #c084fc;"></i>
+                    <h4>СТО</h4>
+                    <span>диагностика · ремонт</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-bank" style="color: #e2e8f0;"></i>
+                    <h4>Музей</h4>
+                    <span>0 в экспозиции</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА: БИЗНЕС -->
+        <section id="page-business" class="page">
+            <h2 class="page-title">Бизнес</h2>
+            <p class="page-subtitle">Управляйте бизнесами, смотрите доходы и платите налоги.</p>
+
+            <div class="grid-menu">
+                <div class="grid-item">
+                    <i class="ph ph-buildings" style="color: #60a5fa;"></i>
+                    <h4>Бизнес</h4>
+                    <span>открыть первый бизнес</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-briefcase" style="color: #d4a373;"></i>
+                    <h4>Мои бизнесы</h4>
+                    <span>пока нет</span>
+                </div>
+                <div class="grid-item">
+                    <i class="ph ph-receipt" style="color: #e2e8f0;"></i>
+                    <h4>Налоговая</h4>
+                    <span>долгов нет</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА: КЕЙСЫ (Улучшенная) -->
+        <section id="page-cases" class="page">
+            <h2 class="page-title">Кейсы</h2>
+            <p class="page-subtitle">Донат-кейсы. Шансы выпадения смотрите внутри.</p>
+
+            <div class="cases-grid">
+                <!-- Кейс 1 -->
+                <div class="case-card" data-case="legend">
+                    <div class="case-image-wrapper" style="background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%);">
+                        <i class="ph-fill ph-cube" style="color: #60a5fa; font-size: 80px; text-shadow: 0 0 20px #60a5fa;"></i>
+                    </div>
+                    <div class="case-info">
+                        <h3>Кейс «Легенда» <span class="price">99 ₽</span></h3>
+                        <p>Редкие автомобили, номера и косметические предметы.</p>
+                        <button class="primary-btn buy-case-btn" data-price="99">Купить · 99 ₽</button>
+                    </div>
+                </div>
+
+                <!-- Кейс 2 -->
+                <div class="case-card" data-case="millionaire">
+                    <div class="case-image-wrapper" style="background: radial-gradient(circle, rgba(234,179,8,0.3) 0%, transparent 70%);">
+                        <i class="ph-fill ph-treasure-chest" style="color: #eab308; font-size: 80px; text-shadow: 0 0 20px #eab308;"></i>
+                    </div>
+                    <div class="case-info">
+                        <h3>Кейс «Миллиардер» <span class="price">499 ₽</span></h3>
+                        <p>Премиальные автомобили, вертолеты и элитные бизнесы.</p>
+                        <button class="primary-btn buy-case-btn" data-price="499">Купить · 499 ₽</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА: ДРУГОЕ -->
+        <section id="page-other" class="page">
+            <h2 class="page-title">Другое</h2>
+            
+            <div class="card profile-card" style="background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%); border-color: #d4a373;">
+                <div class="flex-between">
+                    <div>
+                        <span class="stat-label" style="color: #d4a373;">ЛИЦЕНЗИЯ ПЕРЕКУПА</span>
+                        <h3 style="margin: 5px 0;">ksd</h3>
+                        <p style="margin: 0; color: #888; font-size: 13px;">Новичок с авторынка</p>
+                    </div>
+                    <div class="level-badge">ЛВЛ 1</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0;">Активация промокода</h3>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="Промокод" class="input-field">
+                    <button class="primary-btn">Активировать</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0;">Аккаунт</h3>
+                <p style="color: #888; font-size: 14px;">steamapplepay@gmail.com</p>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="primary-btn">Сохранить</button>
+                    <button class="secondary-btn">Выйти</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- НИЖНЯЯ НАВИГАЦИЯ -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="page-home">
+            <i class="ph ph-house"></i><span>Главная</span>
+        </a>
+        <a href="#" class="nav-item" data-target="page-market">
+            <i class="ph ph-briefcase"></i><span>Рынок</span>
+        </a>
+        <a href="#" class="nav-item" data-target="page-garage">
+            <i class="ph ph-garage"></i><span>Гараж</span>
+        </a>
+        <a href="#" class="nav-item" data-target="page-business">
+            <i class="ph ph-buildings"></i><span>Бизнес</span>
+        </a>
+        <a href="#" class="nav-item" data-target="page-cases">
+            <i class="ph ph-gift"></i><span>Кейсы</span>
+        </a>
+        <a href="#" class="nav-item" data-target="page-other">
+            <i class="ph ph-user"></i><span>Другое</span>
+        </a>
+    </nav>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ КЕЙСОВ (Скрыто по умолчанию) -->
+    <div id="caseModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="text-align: center; color: #d4a373;">Открытие кейса...</h2>
+            
+            <!-- Рулетка -->
+            <div class="roulette-container">
+                <div class="roulette-marker"></div>
+                <div class="roulette-track" id="rouletteTrack">
+                    <!-- Элементы рулетки будут добавлены через JS -->
+                </div>
+            </div>
+
+            <!-- Карточка выигрыша (появляется после анимации) -->
+            <div id="winCard" class="win-card hidden">
+                <div class="win-card-inner">
+                    <span class="rarity-tag">ЛЕГЕНДАРНЫЙ</span>
+                    <i class="ph-fill ph-car" style="font-size: 80px; color: #eab308; margin: 20px 0;"></i>
+                    <h3>Ferrari F40</h3>
+                    <p style="color: #4ade80; font-weight: bold;">Стоимость: 45 000 000 ₽</p>
+                </div>
+            </div>
+
+            <button id="closeModalBtn" class="primary-btn hidden" style="width: 100%; margin-top: 20px;">Забрать авто</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
