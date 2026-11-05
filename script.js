@@ -1,47 +1,26 @@
 // --- БАЗА ДАННЫХ МАШИН ---
-// Rarity: common, rare, epic, legendary
 const carDatabase = [
     // Обычные (Common)
     { name: "Lada Vesta", rarity: "common", price: 800000, img: "https://pngimg.com/uploads/lada/lada_PNG93.png" },
-    { name: "Lada Granta", rarity: "common", price: 600000, img: "https://pngimg.com/uploads/lada/lada_PNG45.png" },
-    { name: "Renault Logan", rarity: "common", price: 700000, img: "https://pngimg.com/uploads/renault/renault_PNG21.png" },
+    { name: "Hyundai i10", rarity: "common", price: 850000, img: "https://pngimg.com/uploads/hyundai/hyundai_PNG48.png" },
     { name: "Kia Rio", rarity: "common", price: 1200000, img: "https://pngimg.com/uploads/kia/kia_PNG48.png" },
-    { name: "Hyundai Solaris", rarity: "common", price: 1300000, img: "https://pngimg.com/uploads/hyundai/hyundai_PNG48.png" },
-    { name: "Volkswagen Polo", rarity: "common", price: 1100000, img: "https://pngimg.com/uploads/volkswagen/volkswagen_PNG81.png" },
     { name: "Toyota Corolla", rarity: "common", price: 1500000, img: "https://pngimg.com/uploads/toyota/toyota_PNG1923.png" },
-    { name: "Ford Focus", rarity: "common", price: 1400000, img: "https://pngimg.com/uploads/ford/ford_PNG43.png" },
-    
+    { name: "Renault Logan", rarity: "common", price: 700000, img: "https://pngimg.com/uploads/renault/renault_PNG21.png" },
+    { name: "Volkswagen Polo", rarity: "common", price: 1100000, img: "https://pngimg.com/uploads/volkswagen/volkswagen_PNG81.png" },
     // Редкие (Rare)
     { name: "BMW 3 Series", rarity: "rare", price: 3500000, img: "https://pngimg.com/uploads/bmw/bmw_PNG995.png" },
     { name: "Audi A4", rarity: "rare", price: 3800000, img: "https://pngimg.com/uploads/audi/audi_PNG1045.png" },
     { name: "Mercedes C-Class", rarity: "rare", price: 4200000, img: "https://pngimg.com/uploads/mercedes/mercedes_PNG802.png" },
     { name: "Toyota Camry", rarity: "rare", price: 3000000, img: "https://pngimg.com/uploads/toyota/toyota_PNG1918.png" },
-    { name: "Mazda 6", rarity: "rare", price: 2800000, img: "https://pngimg.com/uploads/mazda/mazda_PNG41.png" },
-    { name: "Nissan X-Trail", rarity: "rare", price: 3200000, img: "https://pngimg.com/uploads/nissan/nissan_PNG49.png" },
-    { name: "Volvo XC60", rarity: "rare", price: 4000000, img: "https://pngimg.com/uploads/volvo/volvo_PNG42.png" },
-    { name: "Lexus RX350", rarity: "rare", price: 5500000, img: "https://pngimg.com/uploads/lexus/lexus_PNG39.png" },
-    
     // Эпические (Epic)
-    { name: "BMW M5 F90", rarity: "epic", price: 12000000, img: "https://pngimg.com/uploads/bmw/bmw_PNG989.png" },
-    { name: "Audi RS6", rarity: "epic", price: 14000000, img: "https://pngimg.com/uploads/audi/audi_PNG1015.png" },
-    { name: "Mercedes E63 AMG", rarity: "epic", price: 15000000, img: "https://pngimg.com/uploads/mercedes/mercedes_PNG796.png" },
-    { name: "Porsche 911 Carrera", rarity: "epic", price: 18000000, img: "https://pngimg.com/uploads/porsche/porsche_PNG2.png" },
+    { name: "Porsche 911", rarity: "epic", price: 18000000, img: "https://pngimg.com/uploads/porsche/porsche_PNG2.png" },
     { name: "Nissan GT-R R35", rarity: "epic", price: 11000000, img: "https://pngimg.com/uploads/nissan/nissan_PNG40.png" },
     { name: "Chevrolet Camaro SS", rarity: "epic", price: 8000000, img: "https://pngimg.com/uploads/chevrolet/chevrolet_PNG63.png" },
-    { name: "Ford Mustang GT", rarity: "epic", price: 7500000, img: "https://pngimg.com/uploads/ford/ford_PNG42.png" },
-    
     // Легендарные (Legendary)
-    { name: "Ferrari F40", rarity: "legendary", price: 45000000, img: "https://pngimg.com/uploads/ferrari/ferrari_PNG10297.png" },
-    { name: "Ferrari 488", rarity: "legendary", price: 35000000, img: "https://pngimg.com/uploads/ferrari/ferrari_PNG10281.png" },
-    { name: "Lamborghini Huracan", rarity: "legendary", price: 40000000, img: "https://pngimg.com/uploads/lamborghini/lamborghini_PNG10715.png" },
-    { name: "Lamborghini Aventador", rarity: "legendary", price: 55000000, img: "https://pngimg.com/uploads/lamborghini/lamborghini_PNG10704.png" },
     { name: "Bugatti Chiron", rarity: "legendary", price: 150000000, img: "https://pngimg.com/uploads/bugatti/bugatti_PNG33.png" },
-    { name: "Bugatti Veyron", rarity: "legendary", price: 120000000, img: "https://pngimg.com/uploads/bugatti/bugatti_PNG32.png" },
-    { name: "McLaren 720S", rarity: "legendary", price: 42000000, img: "https://pngimg.com/uploads/mclaren/mclaren_PNG25.png" },
-    { name: "Aston Martin DB11", rarity: "legendary", price: 38000000, img: "https://pngimg.com/uploads/aston_martin/aston_martin_PNG23.png" },
     { name: "Koenigsegg Jesko", rarity: "legendary", price: 200000000, img: "https://pngimg.com/uploads/koenigsegg/koenigsegg_PNG7.png" },
-    { name: "Rolls-Royce Phantom", rarity: "legendary", price: 80000000, img: "https://pngimg.com/uploads/rolls_royce/rolls_royce_PNG22.png" },
-    { name: "Bentley Continental GT", rarity: "legendary", price: 45000000, img: "https://pngimg.com/uploads/bentley/bentley_PNG20.png" }
+    { name: "Ferrari F40", rarity: "legendary", price: 45000000, img: "https://pngimg.com/uploads/ferrari/ferrari_PNG10297.png" },
+    { name: "Lamborghini Huracan", rarity: "legendary", price: 40000000, img: "https://pngimg.com/uploads/lamborghini/lamborghini_PNG10715.png" }
 ];
 
 // --- СИСТЕМА СОХРАНЕНИЙ ---
@@ -58,29 +37,18 @@ function saveGame() {
 // --- ИНИЦИАЛИЗАЦИЯ ---
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
-    
-    if (!user) {
-        document.getElementById('authModal').classList.add('active');
-    } else {
-        document.getElementById('authModal').classList.remove('active');
-    }
+    if (!user) document.getElementById('authModal').classList.add('active');
+    else document.getElementById('authModal').classList.remove('active');
 
     document.getElementById('regBtn').addEventListener('click', () => {
         const nick = document.getElementById('regNickname').value;
-        const email = document.getElementById('regEmail').value;
-        if (nick.length < 3) return alert("Никнейм должен быть больше 3 символов!");
-        
-        user = { nickname: nick, email: email || "Не указан" };
-        saveGame();
-        document.getElementById('authModal').classList.remove('active');
-        updateUI();
+        if (nick.length < 3) return alert("Никнейм слишком короткий!");
+        user = { nickname: nick, email: document.getElementById('regEmail').value || "Не указан" };
+        saveGame(); document.getElementById('authModal').classList.remove('active'); updateUI();
     });
 
     document.getElementById('resetProgressBtn').addEventListener('click', () => {
-        if(confirm("Вы уверены, что хотите удалить весь прогресс?")) {
-            localStorage.clear();
-            location.reload();
-        }
+        if(confirm("Сбросить прогресс?")) { localStorage.clear(); location.reload(); }
     });
 
     document.querySelectorAll('.nav-item').forEach(item => {
@@ -97,38 +65,237 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ---
 function updateUI() {
     document.getElementById('balanceDisplay').textContent = balance.toLocaleString('ru-RU') + ' ₽';
-    
     if (user) {
         document.getElementById('profileNickname').textContent = user.nickname;
         document.getElementById('profileEmail').textContent = user.email;
     }
-    
     renderGarage();
 }
 
-// --- ГАРАЖ ---
+// --- ГАРАЖ (С ГИБДД И ТАЙМЕРОМ) ---
 function renderGarage() {
     const grid = document.getElementById('garageGrid');
-    const count = document.getElementById('garageCount');
+    document.getElementById('garageCount').textContent = `(${garage.length} машин)`;
     grid.innerHTML = '';
-    
-    count.textContent = `(${garage.length} машин)`;
 
     if (garage.length === 0) {
-        grid.innerHTML = '<p style="color: #888; grid-column: 1/-1; text-align: center;">Гараж пуст. Откройте кейсы, чтобы получить авто!</p>';
+        grid.innerHTML = '<p style="color: #888; text-align: center; width: 100%;">Гараж пуст. Крутите кейсы!</p>';
         return;
     }
 
-    garage.forEach(car => {
-        const div = document.createElement('div');
-        div.className = 'garage-item';
-        div.innerHTML = `
-            <img src="${car.img}" alt="${car.name}">
-            <h4>${car.name}</h4>
-            <p>${car.price.toLocaleString('ru-RU')} ₽</p>
+    garage.forEach((car, index) => {
+        let badgeText = "ОБЫЧНАЯ";
+        let badgeColor = "#888";
+        if(car.rarity === 'rare') { badgeText = "РЕДКАЯ"; badgeColor = "#60a5fa"; }
+        if(car.rarity === 'epic') { badgeText = "ЭПИЧЕСКАЯ"; badgeColor = "#c084fc"; }
+        if(car.rarity === 'legendary') { badgeText = "ЛЕГЕНДАРНАЯ"; badgeColor = "#eab308"; }
+
+        let regBlock = '';
+        if (!car.registered && !car.regTimer) {
+            regBlock = `
+                <div class="car-action-block">
+                    <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Без номеров · обычный +2% к цене.</p>
+                    <button class="reg-btn" onclick="openGibddModal(${index})">
+                        🚦 Оформить в ГИБДД · 15 000 ₽
+                    </button>
+                </div>
+            `;
+        } else if (car.regTimer) {
+            regBlock = `
+                <div class="car-action-block" style="background: #2a2a2a;">
+                    <div class="flex-between" style="margin-bottom: 5px;">
+                        <span style="color: #60a5fa; font-size: 14px;">🚙 На оформлении</span>
+                        <span class="timer-text" data-time="${car.regTimer}" data-index="${index}" style="color: #d4a373; font-size: 14px; font-weight: bold;">Осталось: ...</span>
+                    </div>
+                    <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Ожидайте завершения процедуры.</p>
+                    <button class="secondary-btn" style="width: 100%; opacity: 0.5;">Ускорить · 21 500 ₽</button>
+                </div>
+            `;
+        } else {
+            regBlock = `
+                <div class="car-action-block" style="background: #2a2a2a;">
+                    <div style="color: #4ade80; font-size: 14px; font-weight: bold;">✅ Зарегистрировано</div>
+                    <p style="font-size: 12px; color: #888; margin-top: 5px;">Номер: А001АА 77</p>
+                </div>
+            `;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'garage-card';
+        card.innerHTML = `
+            <div class="garage-img-box">
+                <span class="rarity-badge" style="color: ${badgeColor}; border-color: ${badgeColor};">${badgeText}</span>
+                <img src="${car.img}" alt="${car.name}">
+            </div>
+            <div class="garage-details">
+                <div class="flex-between" style="margin-bottom: 10px;">
+                    <h3 style="margin: 0;">${car.name}</h3>
+                    <span style="color: #888; font-size: 13px;">351 тыс. км</span>
+                </div>
+                ${regBlock}
+                <div class="car-stats">
+                    <div class="flex-between" style="margin-bottom: 5px;">
+                        <span style="font-size: 12px; color: #888;">Состояние</span>
+                        <span style="font-size: 12px; color: #f87171; font-weight: bold;">10%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                    <div class="flex-between" style="margin-top: 15px;">
+                        <span style="font-size: 12px; color: #888;">Рыночная оценка</span>
+                        <span style="font-size: 13px; font-weight: bold;">~${car.price.toLocaleString('ru-RU')} ₽</span>
+                    </div>
+                </div>
+                <div class="garage-buttons">
+                    <button class="secondary-btn" style="font-size: 12px; padding: 6px 10px;">В музей</button>
+                    <button class="secondary-btn" style="font-size: 12px; padding: 6px 10px;">Продать NPC</button>
+                    <button class="primary-btn" style="font-size: 12px; padding: 6px 10px;">👥 Игроку</button>
+                </div>
+            </div>
         `;
-        grid.appendChild(div);
+        grid.appendChild(card);
     });
+    // Запуск таймеров
+    setInterval(updateTimers, 1000);
+}
+
+// --- ЛОГИКА ТАЙМЕРОВ ГИБДД ---
+function updateTimers() {
+    document.querySelectorAll('.timer-text').forEach(el => {
+        const endTime = parseInt(el.getAttribute('data-time'));
+        const index = parseInt(el.getAttribute('data-index'));
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance < 0) {
+            el.textContent = "Готово!";
+            el.style.color = "#4ade80";
+            // Завершаем оформление
+            garage[index].registered = true;
+            garage[index].regTimer = null;
+            saveGame();
+            // Перерисовываем гараж, чтобы показать номера
+            renderGarage();
+        } else {
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            el.textContent = `Осталось: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+    });
+}
+
+// --- МОДАЛКА ГИБДД С ПОДПИСЬЮ ---
+let currentCarIndex = null;
+let canvas, ctx, drawing = false;
+
+function openGibddModal(index) {
+    if (balance < 15000) return alert("Недостаточно средств для оформления (нужно 15 000 ₽)");
+    currentCarIndex = index;
+    const car = garage[index];
+
+    let gibddModal = document.getElementById('gibddModal');
+    if (!gibddModal) {
+        gibddModal = document.createElement('div');
+        gibddModal.id = 'gibddModal';
+        gibddModal.className = 'modal-overlay';
+        gibddModal.innerHTML = `
+            <div class="modal-content" style="max-width: 500px; padding: 20px; background: #222;">
+                <h2 style="color: #60a5fa; font-size: 18px; text-align: left; margin-bottom: 15px;">🚙 Постановка на учет</h2>
+                
+                <div class="document-paper">
+                    <div class="doc-header">
+                        <span>ГИБДД · РЕГИСТРАЦИОННОЕ ПОДРАЗДЕЛЕНИЕ</span>
+                        <span>ФОРМА № 1</span>
+                    </div>
+                    <h3 class="doc-title">Заявление на постановку на учет</h3>
+                    <p class="doc-subtitle">транспортного средства</p>
+                    
+                    <div class="doc-row"><span>Транспортное средство</span> <span id="docCarName"></span></div>
+                    <div class="doc-row"><span>Год выпуска</span> <span>2003</span></div>
+                    <div class="doc-row"><span>Пробег</span> <span>351 тыс. км</span></div>
+                    <div class="doc-row"><span>VIN</span> <span>XTA00000351702721</span></div>
+                    <div class="doc-row"><span>Заявитель</span> <span id="docUserName"></span></div>
+                    <div class="doc-row"><span>Дата</span> <span id="docDate"></span></div>
+                    <div class="doc-row"><span>Госпошлина</span> <span>15 000 ₽</span></div>
+
+                    <p class="doc-text">Прошу поставить указанное транспортное средство на государственный учет и выдать регистрационные знаки. Достоверность сведений подтверждаю.</p>
+                    
+                    <div class="doc-row" style="margin-top: 15px;"><span>Подпись заявителя:</span></div>
+                    
+                    <div class="canvas-wrapper">
+                        <canvas id="signatureCanvas" width="400" height="100"></canvas>
+                        <span class="canvas-hint">Поставьте подпись здесь</span>
+                    </div>
+                    <div class="doc-footer">Проведите линию подписи</div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button id="clearSigBtn" class="secondary-btn" style="flex: 1;">Очистить</button>
+                    <button id="cancelSigBtn" class="secondary-btn" style="flex: 1;">Отмена</button>
+                    <button id="submitSigBtn" class="primary-btn" style="flex: 1;">Подписать</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(gibddModal);
+        initSignaturePad();
+    }
+    
+    // Заполняем бланк данными
+    document.getElementById('docCarName').textContent = car.name;
+    document.getElementById('docUserName').textContent = user.nickname;
+    document.getElementById('docDate').textContent = new Date().toLocaleDateString('ru-RU');
+    clearSignature(); // Очищаем старую подпись
+    
+    gibddModal.classList.add('active');
+    
+    document.getElementById('cancelSigBtn').onclick = () => gibddModal.classList.remove('active');
+    document.getElementById('clearSigBtn').onclick = () => clearSignature();
+    
+    document.getElementById('submitSigBtn').onclick = () => {
+        balance -= 15000;
+        // Таймер на 1 минуту для теста (в реале 4:30 = 270 сек)
+        garage[currentCarIndex].regTimer = new Date().getTime() + (1000 * 60 * 1); 
+        saveGame();
+        updateUI();
+        gibddModal.classList.remove('active');
+        // alert("Заявление подписано! Ожидайте оформления.");
+    };
+}
+
+// --- РИСОВАНИЕ ПОДПИСИ ---
+function initSignaturePad() {
+    canvas = document.getElementById('signatureCanvas');
+    ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#1e3a8a'; // Синяя ручка
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    
+    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e.touches[0]); }, {passive: false});
+    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); }, {passive: false});
+    canvas.addEventListener('touchend', stopDrawing);
+}
+
+function startDrawing(e) {
+    drawing = true;
+    const rect = canvas.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+}
+
+function draw(e) {
+    if (!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+}
+
+function stopDrawing() { drawing = false; }
+
+function clearSignature() {
+    if(ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // --- ЛОГИКА КЕЙСОВ ---
@@ -142,56 +309,38 @@ document.querySelectorAll('.buy-case-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const price = parseInt(this.getAttribute('data-price'));
         const type = this.getAttribute('data-type');
-        
         if (balance >= price) {
-            balance -= price;
-            saveGame();
-            updateUI();
-            startRoulette(type);
-        } else {
-            alert('Недостаточно средств!');
-        }
+            balance -= price; saveGame(); updateUI(); startRoulette(type);
+        } else alert('Недостаточно средств!');
     });
 });
 
 function getRandomCar(caseType) {
     const roll = Math.random() * 100;
     let targetRarity = "common";
-
     if (caseType === 'common') {
-        if (roll < 1) targetRarity = "legendary";
-        else if (roll < 10) targetRarity = "epic";
-        else if (roll < 30) targetRarity = "rare";
-        else targetRarity = "common";
+        if (roll < 1) targetRarity = "legendary"; else if (roll < 10) targetRarity = "epic"; else if (roll < 30) targetRarity = "rare";
     } else if (caseType === 'premium') {
-        if (roll < 5) targetRarity = "legendary";
-        else if (roll < 25) targetRarity = "epic";
-        else if (roll < 60) targetRarity = "rare";
-        else targetRarity = "common";
+        if (roll < 5) targetRarity = "legendary"; else if (roll < 25) targetRarity = "epic"; else if (roll < 60) targetRarity = "rare";
     }
-
     const filteredCars = carDatabase.filter(car => car.rarity === targetRarity);
     return filteredCars[Math.floor(Math.random() * filteredCars.length)];
 }
 
 function startRoulette(caseType) {
-    modal.classList.add('active');
-    winCard.classList.add('hidden');
-    closeModalBtn.classList.add('hidden');
-    modalTitle.textContent = 'Сканирую...';
-    rouletteTrack.innerHTML = '';
-    rouletteTrack.style.transition = 'none';
-    rouletteTrack.style.transform = 'translateX(0)';
-
+    modal.classList.add('active'); winCard.classList.add('hidden'); closeModalBtn.classList.add('hidden');
+    modalTitle.textContent = 'Сканирую...'; rouletteTrack.innerHTML = '';
+    rouletteTrack.style.transition = 'none'; rouletteTrack.style.transform = 'translateX(0)';
+    
     const winCar = getRandomCar(caseType);
+    // Создаем копию для гаража
+    const carToAdd = { ...winCar, registered: false, regTimer: null };
 
     for (let i = 0; i < 50; i++) {
         const item = document.createElement('div');
         item.classList.add('roulette-item');
-        
         if (i === 45) {
-            item.classList.add('gold');
-            item.innerHTML = `<img src="${winCar.img}" alt="win">`;
+            item.classList.add('gold'); item.innerHTML = `<img src="${winCar.img}">`;
         } else {
             const randCar = carDatabase[Math.floor(Math.random() * carDatabase.length)];
             item.innerHTML = `<img src="${randCar.img}" style="opacity: 0.6;">`;
@@ -200,41 +349,28 @@ function startRoulette(caseType) {
     }
 
     setTimeout(() => {
-        const itemWidth = 110;
-        const offset = -(45 * itemWidth) + (document.querySelector('.roulette-container').offsetWidth / 2) - 50;
-        
+        const offset = -(45 * 110) + (document.querySelector('.roulette-container').offsetWidth / 2) - 50;
         rouletteTrack.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.1, 1)';
         rouletteTrack.style.transform = `translateX(${offset}px)`;
 
         setTimeout(() => {
             modalTitle.textContent = 'Вы выиграли!';
-            
-            let rarityText = "ОБЫЧНАЯ";
-            let rarityColor = "#888";
-            if (winCar.rarity === "rare") { rarityText = "РЕДКАЯ"; rarityColor = "#60a5fa"; }
-            if (winCar.rarity === "epic") { rarityText = "ЭПИЧЕСКАЯ"; rarityColor = "#c084fc"; }
-            if (winCar.rarity === "legendary") { rarityText = "ЛЕГЕНДАРНАЯ"; rarityColor = "#eab308"; }
+            let rText = "ОБЫЧНАЯ", rColor = "#888";
+            if (winCar.rarity === "rare") { rText = "РЕДКАЯ"; rColor = "#60a5fa"; }
+            if (winCar.rarity === "epic") { rText = "ЭПИЧЕСКАЯ"; rColor = "#c084fc"; }
+            if (winCar.rarity === "legendary") { rText = "ЛЕГЕНДАРНАЯ"; rColor = "#eab308"; }
 
             winCard.innerHTML = `
-                <div class="win-card-inner" style="border-color: ${rarityColor}; box-shadow: 0 0 20px ${rarityColor}44;">
-                    <span class="rarity-tag" style="color: ${rarityColor};">${rarityText}</span>
+                <div class="win-card-inner" style="border-color: ${rColor}; box-shadow: 0 0 20px ${rColor}44;">
+                    <span class="rarity-tag" style="color: ${rColor};">${rText}</span>
                     <img src="${winCar.img}" style="width: 100%; max-height: 150px; object-fit: contain; margin: 15px 0;">
                     <h3>${winCar.name}</h3>
-                    <p style="color: #4ade80; font-weight: bold;">Стоимость: ${winCar.price.toLocaleString('ru-RU')} ₽</p>
-                </div>
-            `;
-            winCard.classList.remove('hidden');
-            closeModalBtn.classList.remove('hidden');
+                </div>`;
+            winCard.classList.remove('hidden'); closeModalBtn.classList.remove('hidden');
             
-            // Добавляем в гараж при закрытии модалки
             closeModalBtn.onclick = () => {
-                garage.push(winCar);
-                saveGame();
-                updateUI();
-                modal.classList.remove('active');
+                garage.push(carToAdd); saveGame(); updateUI(); modal.classList.remove('active');
             };
-
         }, 4000);
-
     }, 50);
 }
